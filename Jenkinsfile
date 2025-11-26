@@ -15,18 +15,13 @@ pipeline {
               sh  "git clone https://github.com/vinayak432/hello-world-war/"
             }
         }
-         stage('Build') {
+         stage('Build - deploy') {
             steps {
                 sh "mvn clean package"
-            
+              sh "sudo cp /var/lib/jenkins/workspace/JenkinsFile@2/target/hello-world-war-1.0.2.war /opt/apache-tomcat-10.1.49/webapps"
             }
         }
-         stage('Deploy') {
-            steps {
-                sh "mvn clean deploy"
-            
-            }
-        }
+    
       
     }
 }
