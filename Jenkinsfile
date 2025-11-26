@@ -15,6 +15,12 @@ pipeline {
               sh  "git clone https://github.com/vinayak432/hello-world-war/"
             }
         }
+         stage('Build') {
+            steps {
+                sh "mvn clean package"
+            
+            }
+        }
       
     }
 }
