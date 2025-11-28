@@ -18,10 +18,11 @@ pipeline {
               sh  "git clone https://github.com/vinayak432/hello-world-war/"
             }
         }
-
+}
          stage('Build - deploy') {
     parallel {
-    stage('build warfile')
+    stage('build warfile'){
+    agent { label 'Java' }
             steps {
                 sh "mvn clean package"
                }
