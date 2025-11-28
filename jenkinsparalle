@@ -11,14 +11,14 @@ agent none
               sh  "git clone https://github.com/vinayak432/hello-world-war/"
             }
         }
-         stage('Build - deploy') {
+         stage('Build') {
             agent { label 'Java' }
 		steps {
                 sh "mvn clean package"
                 
             }
         }
-	stage('Build - deploy') {
+	stage('Deploy') {
             agent { label 'Java' }
 		steps {
 		sh "sudo cp /home/slave1/workspace/JenkinsFile/target/hello-world-war-1.0.2.war /opt/apache-tomcat-10.1.49/webapps"
