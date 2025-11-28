@@ -2,8 +2,7 @@ pipeline {
    // agent { label 'Java' }
 
     stages {
-        stage('hello world war') {
-    agent { label 'Java' }
+        stage('hello world war') 
     parallel {
     stage('install mvn - clone git repo'){
     agent { label 'Java' }
