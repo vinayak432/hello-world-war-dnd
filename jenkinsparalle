@@ -21,7 +21,7 @@ agent none
 	stage('Deploy') {
             agent { label 'Java' }
 		steps {
-		sh "sudo cp /home/slave1/workspace/JenkinsFile/target/hello-world-war-1.0.2.war /opt/apache-tomcat-10.1.49/webapps"
+		sh "sudo cp /home/slave1/workspace/jenkinsparalle/target/hello-world-war-1.0.2.war /opt/apache-tomcat-10.1.49/webapps"
     			}
 				}
 			}
