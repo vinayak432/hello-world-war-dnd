@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('hello world war') {
     parallel {
-    stage('install mvn - clone git repo')
+    stage('install mvn - clone git repo'){
+    agent { label 'Java' }
             steps {
                 sh "sudo apt update"
               sh  "sudo apt install maven -y"
@@ -31,6 +32,6 @@ pipeline {
             }
         }
     
-      
+      }
     }
 }
