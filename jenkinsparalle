@@ -1,9 +1,11 @@
 pipeline {
    // agent { label 'Java' }
 agent none
-parallel {
+ stages {
+        stage('Hello world war') {
+	parallel {
         stage('update and install mvn') {
-	   agent { label 'Java' }
+		   agent { label 'Java' }
             steps {
                 sh "sudo apt update"
               sh  "sudo apt install maven -y"
@@ -23,4 +25,5 @@ parallel {
             }
         }
     }
+}
 }
