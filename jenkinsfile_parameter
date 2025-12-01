@@ -6,7 +6,7 @@ string(name: 'hwrd', defaultValue: '', description: 'A sample string parameter')
 booleanParam(name: 'SAMPLE_BOOLEAN', defaultValue: true, description: 'A boolean parameter')
 choice(name: 'hwrd2', choices: ['package', 'compile','install','deploy'], description: 'Choose one option')
 }
-withCredentials([usernamePassword(credentialsId: '5cdee050-f566-4b06-bbac-6aa766be463f', usernameVariable: 'vinayak432', passwordVariable: 'admin@123')]) {sh "echo "password verifiedd"}
+withCredentials([usernamePassword(credentialsId: '5cdee050-f566-4b06-bbac-6aa766be463f', usernameVariable: 'vinayak432', passwordVariable: 'admin@123')]) {sh "echo "password verifiedd""}
  stages {
         stage('Hello world war') {
 	parallel {
