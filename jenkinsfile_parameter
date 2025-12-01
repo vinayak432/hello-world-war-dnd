@@ -16,7 +16,7 @@ choice(name: 'hwrd2', choices: ['package', 'compile','install','deploy'], descri
             }
         }
     }
-}
+
 //withCredentials([usernamePassword(credentialsId: '5cdee050-f566-4b06-bbac-6aa766be463f', usernameVariable: 'vinayak432', passwordVariable: 'admin@123')]) {sh "echo "password verifiedd""}
  stages {
         stage('Hello world war') {
@@ -44,5 +44,5 @@ choice(name: 'hwrd2', choices: ['package', 'compile','install','deploy'], descri
 			}
 		}
 	}
-}
+
 }
