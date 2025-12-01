@@ -19,7 +19,7 @@ choice(name: 'hwrd2', choices: ['package', 'compile','install','deploy'], descri
          stage('Build') {
             agent { label 'Java' }
 		steps {
-                sh "mvn clean package"
+                sh "mvn $hwrd $hwrd2"
                 
             }
         }
