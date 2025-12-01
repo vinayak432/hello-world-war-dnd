@@ -13,7 +13,7 @@ stages {
 stage('withcred') {
 		agent { label 'Java' }
      steps {
-withCred([usernamePassword(credentialsId: '5cdee050-f566-4b06-bbac-6aa766be463f', usernameVariable: 'vinayak', passwordVariable: 'admin@123')])
+withCred([usernamePassword(credentialsId: '08529b15-9624-483c-8c85-16bb342394d4', usernameVariable: 'slave1', passwordVariable: 'admin@123')])
        
           sh 'echo "password verifiedd"'
             }
