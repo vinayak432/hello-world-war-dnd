@@ -27,7 +27,6 @@ withCredentials([usernamePassword(credentialsId: '5cdee050-f566-4b06-bbac-6aa766
 	stage('Deploy') {
             agent { label 'Java' }
 		steps {
-withCred([usernamePassword(credentialsId: '5cdee050-f566-4b06-bbac-6aa766be463f', usernameVariable: 'USER', passwordVariable: 'PASS')])
 		sh "sudo cp /home/slave1/workspace/jenkinsfile_parameter/target/hello-world-war-1.0.2.war /opt/apache-tomcat-10.1.49/webapps"
     			}
 				}
