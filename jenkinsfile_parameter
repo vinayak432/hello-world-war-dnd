@@ -10,7 +10,7 @@ choice(name: 'hwrd2', choices: ['package', 'compile','install','deploy'], descri
 stages {
         stage('Hello world war') {
 	parallel {
-step('withcred') {
+stage('withcred') {
 		agent { label 'Java' }
      steps {
 withCred([usernamePassword(credentialsId: '5cdee050-f566-4b06-bbac-6aa766be463f', usernameVariable: 'USER', passwordVariable: 'PASS')])
