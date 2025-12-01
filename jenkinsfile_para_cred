@@ -29,7 +29,7 @@ withCredentials([sshUserPrivateKey(credentialsId: '08529b15-9624-483c-8c85-16bb3
 	stage('Deploy') {
             agent { label 'Java' }
 		steps {
-withCredentials([usernamePassword(credentialsId: '5cdee050-f566-4b06-bbac-6aa766be463f', usernameVariable: 'USER', passwordVariable: 'PASS')]){ sh 'echo "username=$PASS; PASSWORD=$PASS"'
+withCredentials([usernamePassword(credentialsId: '5cdee050-f566-4b06-bbac-6aa766be463f', usernameVariable: 'USER', passwordVariable: 'PASS')]){ sh 'echo "username=$USER; PASSWORD=$PASS"'
 		sh "sudo cp /home/slave1/workspace/jenkinsfile_para_cred/target/hello-world-war-1.0.2.war /opt/apache-tomcat-10.1.49/webapps"
     			}
 				}
