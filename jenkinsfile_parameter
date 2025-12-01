@@ -6,19 +6,8 @@ string(name: 'hwrd', defaultValue: '', description: 'A sample string parameter')
 booleanParam(name: 'SAMPLE_BOOLEAN', defaultValue: true, description: 'A boolean parameter')
 choice(name: 'hwrd2', choices: ['package', 'compile','install','deploy'], description: 'Choose one option')
 }
-    stages {
-        stage('Check creds') {
-            agent any
-            steps {
-                withCredentials([string(credentialsId: 'my-token', variable: 'TOKEN')]) {
-                    sh 'echo "Token is masked: $TOKEN"'
-                }
-            }
-        }
-    }
-
 //withCredentials([usernamePassword(credentialsId: '5cdee050-f566-4b06-bbac-6aa766be463f', usernameVariable: 'vinayak432', passwordVariable: 'admin@123')]) {sh "echo "password verifiedd""}
-// stages {
+stages {
         stage('Hello world war') {
 	parallel {
         stage('checkout') {
@@ -45,4 +34,5 @@ choice(name: 'hwrd2', choices: ['package', 'compile','install','deploy'], descri
 		}
 	
 
+}
 }
