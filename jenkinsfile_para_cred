@@ -12,7 +12,7 @@ stages {
         stage('checkout') {
 		agent { label 'Java' }
             steps {
-withCredentials([usernamePassword(credentialsId: '08529b15-9624-483c-8c85-16bb342394d4', usernameVariable: 'USER', passwordVariable: 'PASS')]){ sh 'echo "username=$PASS; PASSWORD=$PASS"'
+withCredentials([usernamePassword(credentialsId: '5cdee050-f566-4b06-bbac-6aa766be463f', usernameVariable: 'USER', passwordVariable: 'PASS')]){ sh 'echo "username=$PASS; PASSWORD=$PASS"'
                 sh "rm -rf hello-world-war"
               sh  "git clone https://github.com/vinayak432/hello-world-war/"
             }
