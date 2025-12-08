@@ -4,13 +4,13 @@ pipeline {
     agent { label 'java' }
 
     stages {
-        stage('Demo') {
+        stage('Library-Demo') {
              steps {
               echo 'Executing a shared lib function'
                  sayHello 'Devops'
-
              }
          }
+
         stage('Checkout') {
             steps {
                 script {
@@ -22,19 +22,11 @@ pipeline {
                 }
             }
         }
-        
-        stage('test') {
-            steps {
-                script {
-                    build 'test'
-                }
-            }
-        }
 
         stage('Build') {
             steps {
                 script {
-                    build 'package'
+                    build 'install'
                 }
             }
         }
