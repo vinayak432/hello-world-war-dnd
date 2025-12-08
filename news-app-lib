@@ -1,8 +1,8 @@
 @Library('pipeline_library') _
 
-
 pipeline {
     agent { label 'java' }
+
     stages {
         stage('Demo') {
              steps {
@@ -22,11 +22,19 @@ pipeline {
                 }
             }
         }
+        
+        stage('test') {
+            steps {
+                script {
+                    build 'test'
+                }
+            }
+        }
 
         stage('Build') {
             steps {
                 script {
-                    build 'install'
+                    build 'package'
                 }
             }
         }
