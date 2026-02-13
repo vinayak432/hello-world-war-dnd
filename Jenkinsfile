@@ -33,7 +33,7 @@ pipeline {
                 echo "Tagging image..."
                 sh '''
                 docker tag hello-world-war-dckr:${BUILD_NUMBER} \
-                936045463151.dkr.ecr.us-east-1.amazonaws.com/hello-world-war-dckr:${BUILD_NUMBER}
+                936045463151.dkr.ecr.ap-northeast-1.amazonaws.com/hello-world-war-dckr:${BUILD_NUMBER}
                 '''
             }
         }
