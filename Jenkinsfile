@@ -1,28 +1,63 @@
 pipeline {
-    agent { label 'Java' }
+    agent { label 'slave' }
 
     stages {
-        stage('update and install mvn') {
+
+        stage('Checkout') {
             steps {
-                sh "sudo apt update"
-              sh  "sudo apt install maven -y"
+                echo "Checking out source code..."
+                checkout scm
             }
         }
-      
-        stage('checkout') {
+
+        stage('Build Docker Image') {
             steps {
-                sh "rm -rf hello-world-war"
-              sh  "git clone https://github.com/vinayak432/hello-world-war/"
+                echo "Building Docker image..."
+                sh 'docker build -t hello-world-war-dckr:${BUILD_NUMBER} .'
             }
         }
-         stage('Build - deploy') {
+
+        stage('Login to ECR') {
             steps {
-                sh "mvn clean package"
-                sh "sudo cp /home/slave1/workspace/JenkinsFile/target/hello-world-war-1.0.2.war /opt/apache-tomcat-10.1.49/webapps"
-            
+                echo "Logging into AWS ECR..."
+                sh '''
+                aws ecr get-login-password --region ap-northeast-1 | \
+                docker login --username AWS --password-stdin \
+                936045463151.dkr.ecr.ap-northeast-1.amazonaws.com
+                '''
             }
         }
-    
-      
+
+        stage('Tag Docker Image') {
+            steps {
+                echo "Tagging image..."
+                sh '''
+                docker tag hello-world-war-dckr:${BUILD_NUMBER} \
+                123456789012.dkr.ecr.us-east-1.amazonaws.com/hello-world-war-dckr:${BUILD_NUMBER}
+                '''
+            }
+        }
+
+        stage('Push to ECR') {
+            steps {
+                echo "Pushing image to ECR..."
+                sh '''
+                docker push 936045463151.dkr.ecr.ap-northeast-1.amazonaws.com/hello-world-war-dckr:${BUILD_NUMBER}
+                '''
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo "Deploying container..."
+                sh '''
+                docker stop hello-container || true
+                docker rm hello-container || true
+                docker run -d -p 8088:8080 \
+                --name hello-container \
+                936045463151.dkr.ecr.ap-northeast-1.amazonaws.com/hello-world-war-dckr:${BUILD_NUMBER}
+                '''
+            }
+        }
     }
 }
