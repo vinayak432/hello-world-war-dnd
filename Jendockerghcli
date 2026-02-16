@@ -1,10 +1,16 @@
 pipeline {
-    agent {
-        docker {
-            image 'ghcr.io/aws/aws-cli:2'
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
-        }
+ //   agent {
+   //     docker {
+     //       image 'ghcr.io/aws/aws-cli:2'
+       //     args '-v /var/run/docker.sock:/var/run/docker.sock'
+        //}
+    //}
+agent {
+    docker {
+        image 'amazon/aws-cli:2'
+        args '-v /var/run/docker.sock:/var/run/docker.sock'
     }
+}
 
     environment {
         AWS_REGION = 'ap-northeast-1'
