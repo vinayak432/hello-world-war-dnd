@@ -7,7 +7,7 @@ pipeline {
     //}
 agent {
     docker {
-        image 'amazon/aws-cli:2'
+        image 'public.ecr.aws/aws-cli/aws-cli:2'
         args '-v /var/run/docker.sock:/var/run/docker.sock'
     }
 }
