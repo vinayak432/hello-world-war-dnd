@@ -2,7 +2,8 @@ pipeline {
 
     agent {
         docker {
-            image 'docker:latest'
+            // image 'docker:latest'
+            image 'ghcr.io/aws/aws-cli:2'
             args '-v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker'
         }
     }
